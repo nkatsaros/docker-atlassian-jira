@@ -24,7 +24,7 @@ ENV JIRA_VERSION 6.2.7
 # extract jira
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
   && mkdir -p /opt/atlassian \
-  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-6.2.7.tar.gz' \
+  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-6.2.7.tar.gz' \
   && tar xf /opt/atlassian/atlassian-jira.tar.gz -C /opt/atlassian --strip-components=1 \
   && rm -f /opt/atlassian/atlassian-jira.tar.gz \
   && chown -R atlassian /opt/atlassian \
