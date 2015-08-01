@@ -19,12 +19,12 @@ RUN apt-get update && apt-get install -y \
     libtcnative-1 \
   && rm -rf /var/lib/apt/lists/*
 
-ENV JIRA_VERSION 6.4.7
+ENV JIRA_VERSION 6.4.9
 
 # extract jira
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
   && mkdir -p /opt/atlassian \
-  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-6.4.7.tar.gz' \
+  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-6.4.9.tar.gz' \
   && tar xf /opt/atlassian/atlassian-jira.tar.gz -C /opt/atlassian --strip-components=1 \
   && rm -f /opt/atlassian/atlassian-jira.tar.gz \
   && chown -R atlassian /opt/atlassian \
