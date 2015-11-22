@@ -18,9 +18,9 @@ import (
 )
 
 const (
-	archiveUrl = `https://my.atlassian.com/download/feeds/archived/jira.json`
-	currentUrl = `https://my.atlassian.com/download/feeds/current/jira.json`
-	eapUrl     = `https://my.atlassian.com/download/feeds/eap/jira.json`
+	archiveUrl = `https://my.atlassian.com/download/feeds/archived/jira-software.json`
+	currentUrl = `https://my.atlassian.com/download/feeds/current/jira-software.json`
+	eapUrl     = `https://my.atlassian.com/download/feeds/eap/jira-software.json`
 )
 
 var tmpl = template.Must(template.ParseFiles("Dockerfile.tmpl"))
@@ -128,10 +128,7 @@ func fetchLatestTarVersions(url string) (versions map[string]Package, err error)
 	versions = map[string]Package{}
 	for _, archive := range archives {
 		filename := path.Base(archive.ZipURL)
-		if !strings.Contains(filename, ".tar.gz") ||
-			(strings.Contains(filename, "enterprise") && !strings.Contains(filename, "standalone")) ||
-			strings.Contains(filename, "cluster") ||
-			strings.Contains(filename, "war") {
+		if !strings.Contains(filename, ".tar.gz") {
 			continue
 		}
 		majmin := archive.Version.MajorMinor()
