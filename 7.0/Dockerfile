@@ -27,12 +27,12 @@ RUN apt-get update && apt-get install -y ca-certificates \
   && rm -rf /var/cache/oracle-jdk8-installer \
   && rm -f /ect/apt/sources.list.d/webupd8team-java.list
 
-ENV JIRA_VERSION 7.0.9
+ENV JIRA_VERSION 7.0.10
 
 # extract jira
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
   && mkdir -p /opt/atlassian \
-  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.0.9-jira-7.0.9.tar.gz' \
+  && curl -o /opt/atlassian/atlassian-jira.tar.gz -SL 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.0.10-jira-7.0.10.tar.gz' \
   && tar xf /opt/atlassian/atlassian-jira.tar.gz -C /opt/atlassian --strip-components=1 \
   && rm -f /opt/atlassian/atlassian-jira.tar.gz \
   && chown -R atlassian /opt/atlassian \
